@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+       
+     
+    </head>
+<body>
+    <div class="main-div">
+    <form action="/action_page.php">       
+        <!--logo and navigation-->
+        <div class="logo-nav">
+            <div class="logo">         
+                <img src="Logo.jpeg" width="150px" height="150px">
+            </div> 
+            <div>  
+                <nav  class="nav">
+                    <ul>
+                        <li><a href="https://htmlpreview.github.io/?https://github.com/GreeshmaRahool/hyf-homework/blob/master/html-css/week3/index.html">Home</a></li>
+                        <li><a href="https://htmlpreview.github.io/?https://github.com/GreeshmaRahool/hyf-homework/blob/master/html-css/week3/Contact.html">Contact</a></li>
+                        <li><a href="https://htmlpreview.github.io/?https://github.com/GreeshmaRahool/hyf-homework/blob/master/html-css/week3/ChooseYourStyle.html">Choose Your Style</a></li>
+                       
+                    </ul>
+                </nav>
+            </div>          
+        </div>
+        <!--Heading-->
+        <h1>Sign up to yourcustomtailor.com</h1>
+        <!--Signup introduction paragraphs-->
+        <div class="signup-para">
+            <p>We can't wait to help you improve your life-style and gain the attention from people around you!</p>       
+            <p> Sign up below to save up to 70% on apparel, hand-bags and cosmetics. Our agents are busy picking the best offers that match your preferences and style. Every week we will send you a hand-picked selection - we just need to know a few details about your first...</p>
+        </div>
+        <!--Heading-Step1--->
+        <h2>Step 1/4 - tell us who you are?</h2>
+        <!--Heading-progress bar-->
+        <h3>Progress</h3>
+        <!--Progress bar-->
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        <!--Form intro-->
+        <div class="formintro"><p>Nice to meet you. Let’s spend a minute to get to know each other? Please enter the following:</p></div>
+         <!--Signup data-->
+         <div class="signupinfo">
+            <div class="fname">
+                <label for="fname" class="fnamelbl">First name*</label>
+                <input type="text" name="fname" class="fnametxt" required>
+            </div>
+            <div class="lname">
+                <label for="lname" class="lnamelbl">Last name*</label>
+                <input type="text" name="lname" class="lnametxt"required>
+            </div>
+        </div>
+        
+        <div class="signupinfo">
+            <div class="country">
+                    <label for="country" class="countrylbl">Country*</label><div>
+                    <select name="country" id="country" class="cntrydrpdwn">
+                        <option value="Select"></option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Germany">Germany</option>
+                    </select>            
+            </div>
+            </div>
+
+           
+        </div>
+        <div class="signupinfo">
+            <div class="street-adrs">
+                <label for="adrs">Street address*</label>
+                <input type="text" name="adrs" class="adrstxt" required>
+            </div>
+            <div class="postcode">
+                <label for="postcode" >Post code*</label>
+                <input type="number" name="postcode" minlength="4" maxlength="4" class="postcode" required>
+            </div>  
+        </div>
+        
+        <div class="profile-desc">
+            <label for="description" class="lblprofile"><h3>Profile description</h3> <br>
+                <br> <em>Please provide a short description of <br>yourself to be displayed<br> on our social community
+                pages.</em></label>
+            <textarea rows="3" cols="50" name="profiletext" maxlength="500" class="profiletxt"></textarea>
+        </div>
+        <div class="adrsinfo">
+            <p class="adrspara">Use the same address for billing and shipping? check the box below to fill out a separate shipping address.</p>
+        </div>
+      <div class="finalsection">
+          <div class="confrmdiv">
+          <div class="divshipping">
+            <label for="lblshipping" class="lblship">Shipping address</label>
+          </div>
+          <div class="divchk">
+            <input type="checkbox" name="chk" checked class="chkconfirm" required>
+          </div>
+        </div>       
+        <div class="divnextbutton">
+            <input type="submit" name="nxtbtn" class="nxtbtn" value="Next step">
+          </div>
+      </div>
+   
+    </form>
+</div>
+</body>
+</html>
+

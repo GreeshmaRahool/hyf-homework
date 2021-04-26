@@ -1,3 +1,7 @@
 movie1
 movie2
+<<<<<<< HEAD
 movie3
+=======
+movie3
+>>>>>>> 318feed7dd94a150d53e11450a9a279a679450c0

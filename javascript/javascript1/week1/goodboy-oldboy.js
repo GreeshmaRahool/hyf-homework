@@ -12,7 +12,7 @@ if(shouldShowResultInDogYears==true)
     
 }
 // Dog year in human year
- shouldShowResultInDogYears=false;
+shouldShowResultInDogYears=false;
 if(shouldShowResultInDogYears==false)
 {
     dogYear = dogYearFuture - dogYearOfBirth;

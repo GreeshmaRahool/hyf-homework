@@ -1,6 +1,14 @@
 function getFullname (firstName,surName,useFormalName,gender)
 {
-    if(useFormalName==true&&gender==='male')
+    if(firstName === " " || surName=== " ")
+    {
+        console.log('Provide valid name!');
+    }
+    else if(typeof(firstName) != "string" || typeof(surName) != "string")
+    {
+        console.log('Provide valid name!');
+    }
+    else if(useFormalName==true&&gender==='male')
     {
         return `Lord ${firstName}${surName}`;
     }

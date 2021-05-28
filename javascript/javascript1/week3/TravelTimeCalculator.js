@@ -16,8 +16,6 @@ const travelInformation = {
    return {timeTravelledInHours , timeTravelledInMinutes}; 
   }
 
-
-  const travelTime = calculateTraveTime(travelInformation);
-
-  console.log(`The total time of travel is ${travelTime.timeTravelledInHours} hours and ${travelTime.timeTravelledInMinutes} minutes.`)
+  const { timeTravelledInHours, timeTravelledInMinutes } = calculateTraveTime(travelInformation);
+  console.log(`The total time of travel is ${timeTravelledInHours} hours and ${timeTravelledInMinutes} minutes.`)
   

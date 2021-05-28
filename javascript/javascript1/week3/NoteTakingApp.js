@@ -2,8 +2,8 @@
 const notes = [];
 function saveNote(content, id) 
 {
- notes.push({content : content , id : id})
- return notes;
+    notes.push({content, id})
+  
 }
 saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
@@ -13,13 +13,13 @@ console.log(notes);
 //Get a note
 function getNote(id) 
 {
-    if(typeof id !== "number" || typeof id === "undefined" )   
+    if(typeof id !== "number")   
     {
         return 'Enter a valid id';
     }
     else
     {    
-        for(i = 0 ; i < notes.length ; i++)
+        for(let i = 0 ; i < notes.length ; i++)
         {                         
             if(notes[i].id === id)
             {

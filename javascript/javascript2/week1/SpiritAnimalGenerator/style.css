@@ -1,0 +1,36 @@
+#txtName{
+    margin : 30px;
+    width :30%;
+    height: 40px;
+    font-size: 20px;
+}
+
+#btnClick{
+  background-color: rgb(18, 105, 129);
+  border: none;
+  color: rgb(208, 211, 212);
+  padding: 15px 40px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+#selectEvent{
+    margin : 10px;
+    width :10%;
+    height: 40px;
+    font-size: 16px;
+}
+#lbltitle{
+    margin-left: 30px;
+    height: 40px;
+    font-size: 20px;
+}
+#descPara{
+    margin-left: 30px;
+    height: 40px;
+    font-size: 30px;
+    color :rgb(148, 67, 53);
+}
+h1{
+    margin-left: 30px;
+}

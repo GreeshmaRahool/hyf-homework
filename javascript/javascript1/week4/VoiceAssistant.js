@@ -1,5 +1,5 @@
 const commandHistory = []
-let curUser = ""
+let currentUserName = ""
 const todos = []
 
 function getReply(command)
@@ -7,9 +7,10 @@ function getReply(command)
 // save the name and respond with a message
     //Checking whether the user already indtroduced 
     let found = false;
+    const lowerCaseCommand = command.toLowerCase();
     for(item in commandHistory) 
     {
-        if(commandHistory[item] === command.toLowerCase()) 
+        if(commandHistory[item] === lowerCaseCommand) 
         {
             found = true;
             break;
@@ -19,27 +20,29 @@ function getReply(command)
     if(command.toLowerCase().startsWith("hello my name is"))
      {
    
-        curUser = command.split(" ").pop()
-        if(curUser == "")
+        let inputUserName = command.split(" ").pop()
+        if(inputUserName === ""
+          || inputUserName === "is" // if it's empty the last word could be 'is'
+        )
         {
             console.log(`No name found. Enter a valid name`)
         }
-       else if(found)
+       else if(currentUserName)
         {
-            console.log(`Hello ${curUser}, we know you already`)
+            console.log(`Hello ${currentUserName}, we know you already`)
         } 
         else 
         {
-            commandHistory.push(command.toLowerCase()) ;
-            console.log(`nice to meet you ${curUser}`) ;
+            currentUserName = inputUserName;
+            console.log(`nice to meet you ${currentUserName}`) ;
         }
     } 
 // If asking for name, return current user
-    else if(command.toLowerCase().startsWith("what is my name")) 
+    else if(lowerCaseCommand.startsWith("what is my name")) 
     { 
-        if (curUser.length) 
+        if (currentUserName.length) 
         {
-            console.log(`Your name is: ${curUser}`);
+            console.log(`Your name is: ${currentUserName}`);
         } 
         else 
         {
@@ -47,7 +50,7 @@ function getReply(command)
         }
     } 
 //Add todo list items
-    else if(command.toLowerCase().startsWith("add") &&
+    else if(lowerCaseCommand.startsWith("add") &&
     command.toLowerCase().endsWith("to my todo")) 
     {
 
@@ -56,7 +59,7 @@ function getReply(command)
         todos.push(task);
     }
 //Remove todo list items 
-    else if(command.toLowerCase().startsWith("remove") &&
+    else if(lowerCaseCommand.startsWith("remove") &&
     command.toLowerCase().endsWith("from my todo")) 
     {
         const task = command.replace("Remove ", "").replace(" from my todo", "");
@@ -79,74 +82,68 @@ function getReply(command)
         }
     }
 //Print todo list items 
-    else if(command.toLowerCase().includes("what is on my todo")) 
+    else if(lowerCaseCommand.includes("what is on my todo")) 
     {
         console.log("\nItems in Todo");
         for(item in todos) 
         {
-            console.log(" - " + todos[item]);
+            console.log("\n - " + todos[item]);
         }
     }
 //Simple arithmetic calculations
-    else if(command.toLowerCase().startsWith("what is"))
+    else if(lowerCaseCommand.startsWith("what is"))
     {
         const calculateCommand = command.split(" ");
         const firstNumber =  parseInt(calculateCommand[2]);
         const secondNumber =  parseInt(calculateCommand[4]);
-        let result = 0;
-        if(calculateCommand[3] ===  '+')
+        
+        const mathOperation = calculateCommand[3];
+        if(mathOperation ===  '+')
         {
-            result=firstNumber + firstNumber;
-            console.log(result);
-           
+            console.log(firstNumber + firstNumber);
         }
-       if(calculateCommand[3] === '-')
+       if(mathOperation === '-')
         {
-            result=firstNumber - firstNumber;
-            console.log(result);
+            console.log(firstNumber - firstNumber);
         }
-        if(calculateCommand[3] === '*')
+        if(mathOperation === '*')
         {
-            result=firstNumber * firstNumber;
-            console.log(result);
+            console.log(firstNumber * firstNumber);
         }
-        if(calculateCommand[3] === '/')
+        if(mathOperation === '/')
         {
-            result=firstNumber / firstNumber;
-            console.log(result);
+            console.log(firstNumber / firstNumber);
         }
-        if(calculateCommand[3] === '%')
+        if(mathOperation === '%')
         {
-            result=firstNumber % firstNumber;
-            console.log(result);
+            console.log(firstNumber % firstNumber);
         }
         
     }
 //Print current day in a human readable format
-    else if (command.includes("what day is today"))
+    else if (lowerCaseCommand.includes("what day is today"))
     {
-        const today = new Date().toDateString();
-        arrDate = today.split(" ");
-        console.log(`${arrDate[2]}. of ${arrDate[1]} ${arrDate[3]}`);
+        const today = new Date().toDateString();        
+        const [ weekday, month, day, year ] = today.split(" "); // this way, we assign each element in the array to a const.
+        console.log(`${day}. of ${month} ${year}`);
     }
 //Set timer
-    else if(command.toLowerCase().startsWith("set timer for"))
+    else if(lowerCaseCommand.startsWith("set timer for"))
     {
          
-        strCmd = command.split(" ");
-        timeUnit = strCmd.pop();
-        readTIme = strCmd[strCmd.length-1];
+        const stringCommand = lowerCaseCommand.split(" ");  
+        let [ , , , readTime, timeUnit] = stringCommand;  
         let calculateTimer = 0;
-        console.log(`Setting a timer for ${readTIme} ${timeUnit}`)
-        if(readTIme > 0)
+        console.log(`Setting a timer for ${readTime} ${timeUnit}`)
+        if(readTime > 0)
         {
             if(timeUnit.toLowerCase().startsWith('sec'))
             {
-                calculateTimer = readTIme * 1000;
+                calculateTimer = readTime * 1000;
             }
             else if(timeUnit.toLowerCase().startsWith('min'))
             {
-                calculateTimer = readTIme * 60 * 1000;
+                calculateTimer = readTime * 60 * 1000;
             }
             else if(timeUnit.toLowerCase().startsWith('hour'))
             {

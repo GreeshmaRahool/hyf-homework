@@ -1,0 +1,33 @@
+[ 
+    {
+      "name" : "My Way",
+      "noOfEmployees" : 1000,
+      "ceo" : "Mary",
+      "rating" :4.6
+    },
+    {
+      "name" : "Wet Paint",
+      "noOfEmployees" : 600,
+      "ceo" : "Jaimy",
+      "rating" :3.6
+    },
+    {
+      "name" : "Wet Paint",
+      "noOfEmployees" : 600,
+      "ceo" : "Jaimy",
+      "rating" :3.6
+    },
+    {
+      "name" : "Gravity",
+      "noOfEmployees" : 900,
+      "ceo" : "Rose",
+      "rating" :4
+    },
+    {
+      "name" : "Small startup",
+      "noOfEmployees" : 40,
+      "ceo" : null,
+      "rating" :4.5
+    }
+  ]
+

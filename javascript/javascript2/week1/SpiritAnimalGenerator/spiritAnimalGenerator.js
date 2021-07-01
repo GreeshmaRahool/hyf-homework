@@ -1,9 +1,9 @@
 const arrSpiritAnimals = ['The beautiful swan','The graceful peacock','The dark moon panther','The confident jaguar','The playful cayote','The creative eagle','The joyful hummingbird','The energetic horse','The innocent deer','The patient spider'];
 
 //Create an input element, a button and a tag to display the spirit animal into.
-const textBox = document.createElement('input');
-textBox.setAttribute('Id','txtName');
-textBox.setAttribute('placeholder','Enter your name');
+const input = document.createElement('input');
+input.setAttribute('Id','txtName');
+input.setAttribute('placeholder','Enter your name');
 const button = document.createElement('button');
 button.setAttribute('Id','btnClick');
 button.innerHTML = 'Click here!'
@@ -11,7 +11,7 @@ const para = document.createElement('p');
 para.setAttribute('Id','descPara');
 
 const body = document.querySelector('body');
-body.appendChild(textBox);
+body.appendChild(input);
 body.appendChild(button);
 body.appendChild(para);
 
@@ -45,14 +45,14 @@ function onSelectChange(){
 
 function getNameWithAnimal()
 {
-    const inputName = textBox.value;
-
-    if(inputName)
-    {
-        para.innerHTML = `${inputName} - ${arrSpiritAnimals[parseInt(Math.random() * 10)]}`;
-    }
-    else
-    {
-        para.innerHTML = `Please provide a name!`;
-    }
+    const inputName = input.value;
+    para.innerHTML = inputName ? "${inputName} - ${arrSpiritAnimals[parseInt(Math.random() * 10)]}" : "Please provide a name!";
+    // if(inputName)
+    // {
+    //     para.innerHTML = `${inputName} - ${arrSpiritAnimals[parseInt(Math.random() * 10)]}`;
+    // }
+    // else
+    // {
+    //     para.innerHTML = `Please provide a name!`;
+    // }
 }

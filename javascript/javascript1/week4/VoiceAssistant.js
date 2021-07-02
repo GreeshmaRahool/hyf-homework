@@ -4,134 +4,133 @@ const todos = []
 
 function getReply(command)
 {
-// save the name and respond with a message
-    //Checking whether the user already indtroduced 
-    let found = false;
     const lowerCaseCommand = command.toLowerCase();
-    for(item in commandHistory) 
+    if (lowerCaseCommand.startsWith("hello my name is")) helloMyNameIsFunction(command);
+        
+    else if (lowerCaseCommand.startsWith("what is my name")) whatIsMyNameFunction();
+        
+    else if (lowerCaseCommand.startsWith("add") &&
+        lowerCaseCommand.endsWith("to my todo")) addTodDo(command);
+        
+    else if (lowerCaseCommand.startsWith("remove") &&
+        lowerCaseCommand.endsWith("from my todo")) removeToDo(command);
+
+    else if (lowerCaseCommand.includes("what is on my todo")) printToDo();
+
+    else if (lowerCaseCommand.startsWith("what is")) arithmeticOperations(command);
+   
+    else if (lowerCaseCommand.includes("what day is today")) printDay();
+    
+    else if (lowerCaseCommand.startsWith("set timer for")) setTimer(lowerCaseCommand);
+    
+}
+// save the name and respond with a message
+//Checking whether the user already indtroduced 
+//If user already exists print a message else save the user name and set current user
+function helloMyNameIsFunction(command){
+    let inputUserName = command.split(" ").pop()
+    if(inputUserName === ""
+      || inputUserName === "is" // if it's empty the last word could be 'is'
+    )
     {
-        if(commandHistory[item] === lowerCaseCommand) 
+        console.log(`No name found. Enter a valid name`)
+    }
+   else if(currentUserName)
+    {
+        console.log(`Hello ${currentUserName}, we know you already`)
+    } 
+    else 
+    {
+        currentUserName = inputUserName;
+        console.log(`nice to meet you ${currentUserName}`) ;
+    }
+}
+
+//If asking for name, return current user
+function whatIsMyNameFunction(){
+    if (currentUserName.length) 
+    {
+        console.log(`Your name is: ${currentUserName}`);
+    } 
+    else 
+    {
+        console.log(`Sorry we don't recognize you`);
+    }
+}
+
+//Add todo list items
+function addTodDo(command) {
+    const task = command.replace("Add ", "").replace(" to my todo", "");
+    console.log("Added " + task + " to todo");
+    todos.push(task);
+}
+
+//Remove todo list items 
+function removeToDo(command) {
+    const task = command.replace("Remove ", "").replace(" from my todo", "");
+    let removed = false;
+    for(item in todos) 
+    {
+        if(todos[item] == task) 
         {
-            found = true;
+            todos.splice(item, 1);
+            console.log(`Removed ${task} to todo`);
+            removed = true;
             break;
         }
     }
-    //If user already exists print a message else save the user name and set current user
-    if(command.toLowerCase().startsWith("hello my name is"))
-     {
-   
-        let inputUserName = command.split(" ").pop()
-        if(inputUserName === ""
-          || inputUserName === "is" // if it's empty the last word could be 'is'
-        )
-        {
-            console.log(`No name found. Enter a valid name`)
-        }
-       else if(currentUserName)
-        {
-            console.log(`Hello ${currentUserName}, we know you already`)
-        } 
-        else 
-        {
-            currentUserName = inputUserName;
-            console.log(`nice to meet you ${currentUserName}`) ;
-        }
-    } 
-// If asking for name, return current user
-    else if(lowerCaseCommand.startsWith("what is my name")) 
-    { 
-        if (currentUserName.length) 
-        {
-            console.log(`Your name is: ${currentUserName}`);
-        } 
-        else 
-        {
-            console.log(`Sorry we don't recognize you`);
-        }
-    } 
-//Add todo list items
-    else if(lowerCaseCommand.startsWith("add") &&
-    command.toLowerCase().endsWith("to my todo")) 
+
+    if (!removed) 
     {
-
-        const task = command.replace("Add ", "").replace(" to my todo", "");
-        console.log("Added " + task + " to todo");
-        todos.push(task);
+        console.log(`Could not find ${task} in todo`);
     }
-//Remove todo list items 
-    else if(lowerCaseCommand.startsWith("remove") &&
-    command.toLowerCase().endsWith("from my todo")) 
-    {
-        const task = command.replace("Remove ", "").replace(" from my todo", "");
+}
 
-        let removed = false;
-        for(item in todos) 
-        {
-            if(todos[item] == task) 
-            {
-                todos.splice(item, 1);
-                console.log(`Removed ${task} to todo`);
-                removed = true;
-                break;
-            }
-        }
-
-        if (!removed) 
-        {
-            console.log(`Could not find ${task} in todo`);
-        }
-    }
 //Print todo list items 
-    else if(lowerCaseCommand.includes("what is on my todo")) 
+function printToDo() {
+    console.log("\nItems in Todo");
+    for(item in todos) 
     {
-        console.log("\nItems in Todo");
-        for(item in todos) 
-        {
-            console.log("\n - " + todos[item]);
-        }
+        console.log("\n - " + todos[item]);
     }
+}
 //Simple arithmetic calculations
-    else if(lowerCaseCommand.startsWith("what is"))
+function arithmeticOperations(command) {
+    const calculateCommand = command.split(" ");
+    const firstNumber =  parseInt(calculateCommand[2]);
+    const secondNumber =  parseInt(calculateCommand[4]);
+    
+    const mathOperation = calculateCommand[3];
+    if(mathOperation ===  '+')
     {
-        const calculateCommand = command.split(" ");
-        const firstNumber =  parseInt(calculateCommand[2]);
-        const secondNumber =  parseInt(calculateCommand[4]);
-        
-        const mathOperation = calculateCommand[3];
-        if(mathOperation ===  '+')
-        {
-            console.log(firstNumber + firstNumber);
-        }
-       if(mathOperation === '-')
-        {
-            console.log(firstNumber - firstNumber);
-        }
-        if(mathOperation === '*')
-        {
-            console.log(firstNumber * firstNumber);
-        }
-        if(mathOperation === '/')
-        {
-            console.log(firstNumber / firstNumber);
-        }
-        if(mathOperation === '%')
-        {
-            console.log(firstNumber % firstNumber);
-        }
-        
+        console.log(firstNumber + firstNumber);
     }
+   if(mathOperation === '-')
+    {
+        console.log(firstNumber - firstNumber);
+    }
+    if(mathOperation === '*')
+    {
+        console.log(firstNumber * firstNumber);
+    }
+    if(mathOperation === '/')
+    {
+        console.log(firstNumber / firstNumber);
+    }
+    if(mathOperation === '%')
+    {
+        console.log(firstNumber % firstNumber);
+    }
+}
 //Print current day in a human readable format
-    else if (lowerCaseCommand.includes("what day is today"))
-    {
-        const today = new Date().toDateString();        
-        const [ weekday, month, day, year ] = today.split(" "); // this way, we assign each element in the array to a const.
-        console.log(`${day}. of ${month} ${year}`);
-    }
+function printDay() {
+    const today = new Date().toDateString();        
+    const [ weekday, month, day, year ] = today.split(" "); // this way, we assign each element in the array to a const.
+    console.log(`${day}. of ${month} ${year}`);
+}
 //Set timer
-    else if(lowerCaseCommand.startsWith("set timer for"))
-    {
-         
-        const stringCommand = lowerCaseCommand.split(" ");  
+function setTimer(lowerCaseCommand) {
+    const stringCommand = lowerCaseCommand.split(" ");  
         let [ , , , readTime, timeUnit] = stringCommand;  
         let calculateTimer = 0;
         console.log(`Setting a timer for ${readTime} ${timeUnit}`)
@@ -155,8 +154,14 @@ function getReply(command)
         {
             console.log(`Invalid time value`)
         }
-    }
 }
+
+
+
+
+
+
+
 
 getReply("Hello my name is Greeshma")
 getReply("Hello my name is Greeshma")

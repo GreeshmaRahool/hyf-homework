@@ -5,6 +5,27 @@ const txtcityName = document.querySelector('#txtCityName');
 const fetchButton = document.querySelector('#fetchButton');
 const appKey = '6e92755c3cd985413c44c7aac6eff7ec';
 
+// const getWeatherData = () => {
+    
+//         const cityName = txtcityName.value;
+//         if (!cityName) {
+//             alert('Provide a city name!');
+//         }
+//         else {
+//                  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appKey}`).then(res => res.json()).then((data) => {
+//                      if (typeof data !== Object) {
+
+//                       alert('city not found!')
+//                     }
+//                     else {
+//                         clearOldData();
+//                         displayWeatherData(data);
+//                     }
+//                  })       
+           
+//         }
+    
+// }
 const getWeatherData = () => {
     
     const cityName = txtcityName.value;
@@ -12,18 +33,21 @@ const getWeatherData = () => {
         alert('Provide a city name!');
     }
     else {
-        
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appKey}`).then(res => res.json()).then((data) => {
-            if ( data.value == 0){
-                alert('No weather data found!')
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appKey}`).then(res => {
+            if (!res.ok) {
+                throw Error('City name not found!')
             }
-            else {
-                clearOldData();
-                displayWeatherData(data);
-            }
-        })
+            return res.json()
+        }).then(data => {
+            clearOldData();
+            displayWeatherData(data);
+        }).catch(e => {
+            alert(e);
+        })                    
+       
     }
 }
+
 fetchButton.addEventListener('click', getWeatherData)
 
 //Display the data
@@ -47,7 +71,7 @@ function displayWeatherData(data) {
     currentDiv.appendChild(weatherIcon);
     
     const temperature = document.querySelector('#temperature');
-    temperature.innerHTML = Math.floor((data.main.temp)- 273.15)+'°';
+    temperature.innerHTML = Math.floor((data.main.temp) - 273.15) + '°';
     const windSpeed = document.querySelector('#windSpeed');
     windSpeed.innerHTML = `WIND : ${Math.floor(data.wind.speed)} m/s`;
     
@@ -105,21 +129,50 @@ currentLocation.addEventListener('click', function () {
     }
 });
 
-const getData = (position) => {
-   
-    
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appKey}`).then(res => res.json()).then((data) => {
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${data.name}&appid=${appKey}`).then(res => res.json()).then((data) => {
-                clearOldData();
-                displayWeatherData(data);
-            })
-        })
-        
-}
+//  const getData = (position) => {  
+//      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appKey}`).then(res => res.json()).then((data) => {                
+//             fetch(`https://api.openweathermap.org/data/2.5/weather?q=${data.name}&appid=${appKey}`).then(res => res.json()).then((data) => {               
+//                 clearOldData();
+//                 displayWeatherData(data);
+//             })
+//      }).catch(e =>{
+//          console.log('City not found')
+//         })   
+// }
 
+function getData(position) {  
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${appKey}`).then(res => res.json()).then((data) => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${data.name}&appid=${appKey}`).then(res => {
+            if (!res.ok) {
+                throw Error('City name not found!')
+            }
+            return res.json();
+        }).then(data => {
+            clearOldData();
+            displayWeatherData(data);
+        }).catch(e => {
+            alert(e);
+        })
+    })
+       
+}
 
 function clearOldData() {
     document.querySelectorAll("img").forEach(element => {
-        element.remove()
+        element.remove();
     });
 }
+
+//Using the local storage- saving the city to local storage and show weather
+function getWeatherFromLocalStorage(){
+    window.localStorage;
+    localStorage.setItem('city', 'copenhagen');
+    const cityFromLocalStorage = localStorage.getItem('city');
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityFromLocalStorage}&appid=${appKey}`)
+        .then((res) => res.json())
+        .then((data) => {
+        console.log(data);
+        displayWeatherData(data);
+    })      
+} 
+getWeatherFromLocalStorage(); 

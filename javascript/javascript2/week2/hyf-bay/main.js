@@ -43,12 +43,9 @@ function searchNameListener(e){
 function searchPriceListener(e){
     if(searchPrice.value == ""){
         renderProducts(products);
+        return;
     }
-    else{
-        const data = products.filter(product =>product.price < parseInt(searchPrice.value));
-        clear();
-        renderProducts(data);
-    }
+    
 }
 function searchRatingListener(e){
     if(searchRating.value == ""){

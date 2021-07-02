@@ -3,11 +3,12 @@ const searchButton = document.querySelector('#searchButton');
 const searchCount = document.querySelector('#searchCount');
 const imageDiv= document.querySelector('#imageDiv');
 const apiKey = 'S8WKPULrgpnM6GTyqIoRArXSpHrlgIgB';
+
 function getGiphyData() {
     if(!searchWord.value) {
         alert('Please provide a giphy name');
     } else {
-        fetch(`http://api.giphy.com/v1/gifs/search?q=${searchWord}&api_key=${apiKey}&limit=${searchCount.value}`)
+        fetch(`http://api.giphy.com/v1/gifs/search?q=${searchWord.value}&api_key=${apiKey}&limit=${searchCount.value}`)
         .then((res) => res.json())
         .then((gifData) => {
             console.log(gifData.data);

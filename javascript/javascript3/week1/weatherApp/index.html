@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   
+<div>
+    <div id="mainDiv">
+        <header>
+            <input type="text" id ="txtCityName" placeholder="Search for a city..">
+            <button id ="fetchButton">Submit</button> 
+            <button id ="currentLocation">Current location weather</button> 
+        </header>
+        <main>
+            <div class="app-wrap">             
+            <section class="location">
+                <div id ="cityName"></div>
+            </section>
+            <div class="current">
+                <div id ="temperature"></div> 
+              
+                <div id="description"></div>
+                <div id ="tempMaxMin"></div>
+               
+                <div id ="windSpeed"></div>
+               
+                <div id ="sunRise"></div>
+                <div id ="sunSet"></div>
+                <div id ="feelsLike"></div>               
+            </div>
+            <p></p>
+            <div id="map"></div>
+        </main>
+    </div>   
+    <script src ="weatherApp.js"></script>
+</body>
+</html>

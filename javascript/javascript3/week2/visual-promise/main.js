@@ -13,7 +13,9 @@ translateOneByOne();
 
 //Using promiseAll
 function translateAllAtOnce() {
-    Promise.all([moveElement(liArray[0], { x: 20, y: 300 }), moveElement(liArray[1], { x: 400, y: 300 }), moveElement(liArray[2], { x: 400, y: 20 })]);
-    console.log('all done');
+    Promise.all([moveElement(liArray[0], { x: 20, y: 300 }), moveElement(liArray[1], { x: 400, y: 300 }), moveElement(liArray[2], { x: 400, y: 20 })]).then(() => {
+        console.log('all done'); 
+    });
+    
 }
 translateAllAtOnce();

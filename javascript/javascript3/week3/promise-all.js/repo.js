@@ -1,5 +1,5 @@
 const arrUsers = ['varsha84', 'BikramRawat', 'somayehdvr']
-function fetchRepo(user){
+function renderRepo(user){
     return fetch(`https://api.github.com/search/repositories?q=user:${user}`).then(res => res.json())
         .then(data => {
             const body = document.querySelector('body')
@@ -37,7 +37,9 @@ function fetchRepo(user){
         });
    
 }
-Promise.all([fetchRepo(arrUsers[0]), fetchRepo(arrUsers[1]), fetchRepo(arrUsers[2])]).then(()=>{
-   console.log('Data fetched successfully!')
-})
-
+function getRepo() {
+    Promise.all([renderRepo(arrUsers[0]), renderRepo(arrUsers[1]), renderRepo(arrUsers[2])]).then(() => {
+        console.log('Data fetched successfully!')
+    })
+}
+getRepo();

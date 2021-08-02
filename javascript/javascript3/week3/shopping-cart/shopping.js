@@ -52,11 +52,8 @@ class Product {
   
     getTotal() {
       //Implement functionality here
-        let total = 0;
-        this.products.forEach((item) => total = item.price + total)
-        const totalPrice = document.createElement('p');
-        totalPrice.innerHTML = `Total price: ${total}`;
-        document.body.appendChild(totalPrice);
+      return this.products.reduce((a, b) => a + b.price, 0)
+       
     }
   
     renderProducts() {
@@ -64,11 +61,12 @@ class Product {
         const title = document.createElement('h1');
         title.innerHTML = "List of products";
        
-        const ul = document.createElement('ul');
-        const body = document.querySelector('body');
+      const ul = document.createElement('ul');
+      const totalPrice = document.createElement('p');
+      const body = document.querySelector('body');
         body.appendChild(title);
         body.appendChild(ul);
-       
+        body.appendChild(totalPrice);
 
         this.products.forEach(item => {
             const li = document.createElement('li');
@@ -76,12 +74,13 @@ class Product {
             const p = document.createElement('p')
 
             h2.innerHTML = item.name;
-            p.innerHTML =` , Price : ${item.name}`;
+            p.innerHTML =` , Price : ${item.price}`;
             li.appendChild(h2);
-            li.appendChild(p);
-           
-       
+            li.appendChild(p);      
             ul.appendChild(li);
+            totalPrice.innerHTML = `Total price: ${this.getTotal()}`;
+         
+          
         })
 
 
@@ -95,8 +94,8 @@ class Product {
                   userName.innerHTML = `User name : ${data.username}`;
                   document.body.appendChild(userName);
               })
-      this.renderProducts();
-      this.getTotal();
+      //this.renderProducts();
+    
       }
     
   }
@@ -112,7 +111,7 @@ class Product {
   console.log(shoppingCart)
   shoppingCart.removeProduct(charger);
   console.log(shoppingCart)
-  shoppingCart.getTotal();
+  
   shoppingCart.renderProducts();
   shoppingCart.searchProduct('Bose SoundLink Headphones')
   shoppingCart.getUser();

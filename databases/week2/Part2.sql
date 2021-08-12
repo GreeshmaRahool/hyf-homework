@@ -26,14 +26,10 @@ SET NAMES utf8mb4;
     CONSTRAINT `fk_class` FOREIGN KEY (`class_id`) 
     REFERENCES `class` (`id`) 
     ON DELETE CASCADE ON UPDATE CASCADE
- )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
   --Create an index on the name column of the student table.
-  CREATE INDEX idx_name
-  ON student(name);
+  CREATE INDEX idx_name ON student(name);
   --Add a new column to the class table named status which can only have the 
   --following values: not-started, ongoing, finished.
-  ALTER 
-  TABLE class
-  ADD
-  status enum('not-started','ongoing','finished');
+  ALTER TABLE class ADD status enum('not-started','ongoing','finished');
  

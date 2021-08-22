@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "Benjamin Hughes",
+    "email": "benjamin@hughes.dk",
+    "mealId": 1
+  },
+  {
+    "id": 2,
+    "name": "Greeshma",
+    "email": "greeshma@gamail.com",
+    "mealId": 2
+  },
+  {
+    "id": 3,
+    "name": "Mathias",
+    "email": "mathias@gamail.com",
+    "mealId": 2
+  },{
+    "id": 4,
+    "name": "Isa",
+    "email": "isa@gamail.com",
+    "mealId": 2
+  }
+]

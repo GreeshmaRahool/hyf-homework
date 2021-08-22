@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "numberOfStars": 3,
+    "content": "Best meal ever",
+    "mealId": 1,
+    "createdAt": 12345
+  },
+  {
+    "id": 2,
+    "numberOfStars": 4,
+    "content": "Excellent meal",
+    "mealId": 2,
+    "createdAt": 12345
+  },
+  {
+    "id": 3,
+    "numberOfStars": 3,
+    "content": "Tasty meal",
+    "mealId": 3,
+    "createdAt": 12345
+  },
+  {
+    "id": 4,
+    "numberOfStars": 4,
+    "content": "Must try meal",
+    "mealId": 4,
+    "createdAt": 12345
+  }
+]

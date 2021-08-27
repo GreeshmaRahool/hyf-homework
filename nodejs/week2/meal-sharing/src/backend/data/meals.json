@@ -1,0 +1,35 @@
+[
+    {
+        "id" : 1,
+        "title" : "Indian food in the summer",
+        "maxNumberOfGuests" : 5,
+        "description" : "A nice night out eating delicious indian food",
+        "createdAt" : "2019/12/7 14:34",
+        "price" : 67
+    },
+    {
+        "id" : 2,
+        "title" : "Moscow – Pelmeni",
+        "maxNumberOfGuests" : 12,
+        "description" : "A kind of a dumpling  with a meat filling",
+        "createdAt" : "2019/8/17 11:34",
+        "price" : 45
+    },
+    {
+        "id" : 3,
+        "title" : "Irish Colcannon Potatoes",
+        "maxNumberOfGuests" : 15,
+        "description" : "Ireland's traditional dish",
+        "createdAt" : "2019/8/17 17:34",
+        "price" : 120
+    },
+    {
+        "id" : 4,
+        "title" : "Lemon & Dill Shrimp Sandwiche",
+        "maxNumberOfGuests" : 10,
+        "description" : "A special sandwitch from Norway",
+        "createdAt" : "2019/8/17 16:34",
+        "price" : 250
+    }
+    
+]

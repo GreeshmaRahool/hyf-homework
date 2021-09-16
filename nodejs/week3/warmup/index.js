@@ -4,7 +4,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.send("nodejs week3 homework"));
 
-//Get:Addition with multiple query params
+//Get:Addition with multiple query params.
 app.get("/calculator/add", (request, response) => {
     let sum = 0;
     for (let param in request.query) {

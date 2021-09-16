@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import ToDo from "./App";
+import ToDo from "./Todo";
 import todoItems from "./getTodos";
 const todos = todoItems();
 
@@ -9,23 +9,15 @@ const todos = todoItems();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
-const ToDoListTable = () => {
+const ToDoList = () => {
   return (
     <div>
       <h1>Todo List</h1>
-      <ToDoListRow />
-    </div>
-  );
-};
-
-const ToDoListRow = () => {
-  return (
-    <div>
       {todos.map((todo) => {
-        return <ToDo description={todo.description} endDate={todo.endDate} />;
+        return <ToDo id={ todo.id} description={todo.description} endDate={todo.endDate} />;
       })}
     </div>
   );
 };
 
-ReactDOM.render(<ToDoListTable />, document.getElementById("root"));
+ReactDOM.render(<ToDoList />, document.getElementById("root"));
